@@ -60,18 +60,18 @@ Output Layer: 1 neuron (Q-value prediction)
 
 ## ✅ Output
 
--Episode 10/100, Avg Reward: -1583.48
--Episode 20/100, Avg Reward: -1083.44
--Episode 30/100, Avg Reward: -808.28
--Episode 40/100, Avg Reward: -382.91
--Episode 50/100, Avg Reward: -403.68
--Episode 60/100, Avg Reward: -177.63
--Episode 70/100, Avg Reward: -164.24
--Episode 80/100, Avg Reward: -239.15
--Episode 90/100, Avg Reward: -109.04
--Episode 100/100, Avg Reward: -159.20
+- Episode 10/100, Avg Reward: -1583.48
+- Episode 20/100, Avg Reward: -1083.44
+- Episode 30/100, Avg Reward: -808.28
+- Episode 40/100, Avg Reward: -382.91
+- Episode 50/100, Avg Reward: -403.68
+- Episode 60/100, Avg Reward: -177.63
+- Episode 70/100, Avg Reward: -164.24
+- Episode 80/100, Avg Reward: -239.15
+- Episode 90/100, Avg Reward: -109.04
+- Episode 100/100, Avg Reward: -159.20
 
--Test Reward = -358.07
+- Test Reward = -358.07
 
 ## 🔮 Future Scope
 1. Improve the Neural Network
