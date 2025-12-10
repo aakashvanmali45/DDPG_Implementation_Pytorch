@@ -1,5 +1,5 @@
-numpy==2.2.5
-torch==2.6.0
-gymnasium==1.1.1
-matplotlib==3.10.1
-"gymnasium[classic_control]"
+numpy==2.3.5
+torch==2.9.1
+gymnasium==1.2.2
+matplotlib==3.10.7
+"gymnasium[classic_control]==1.2.2"

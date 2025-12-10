@@ -11,10 +11,10 @@ torch.manual_seed(42)
 random.seed(42)
 
 class Actor(nn.Module):
-    def __init__(self, state_dim, action_dim, max_action, hidden_dim = 256):
-        super(Actor, self).__init__()
+    def __init__(self, state_dim, action_dim, max_action, hidden_dim=256):
+        super().__init__()
 
-        self.model =nn.Sequential(
+        self.model = nn.Sequential(
             nn.Linear(state_dim, hidden_dim),
             nn.ReLU(),
             nn.Linear(hidden_dim, hidden_dim), #generally we add 2-3 hidden layers
@@ -31,8 +31,8 @@ class Actor(nn.Module):
         return self.max_action * self.model(state) #scale the output to action space
         
 class Critic(nn.Module):
-    def __init__(self, state_dim, action_dim, hidden_dim = 256):
-        super(Critic, self).__init__()
+    def __init__(self, state_dim, action_dim, hidden_dim=256):
+        super().__init__()
 
         self.model = nn.Sequential(
             nn.Linear(state_dim + action_dim, hidden_dim),
@@ -63,7 +63,7 @@ class ReplayBuffer:
         return len(self.buffer)
     
 class OUNoise:
-    def __init__(self, action_dim, mu = 0, theta = 0.15, sigma = 0.2):
+    def __init__(self, action_dim, mu=0, theta=0.15, sigma=0.2):
         self.action_dim = action_dim
         self.mu = mu
         self.theta = theta
@@ -80,7 +80,7 @@ class OUNoise:
         return self.state
         
 class DDPGAgent:
-    def __init__(self, state_dim, action_dim, max_action,device):
+    def __init__(self, state_dim, action_dim, max_action, device):
         self.device = device
         self.actor = Actor(state_dim, action_dim, max_action).to(device)
         self.critic = Critic(state_dim, action_dim).to(device)
@@ -94,15 +94,15 @@ class DDPGAgent:
         for param in self.critic_target.parameters():
             param.requires_grad = False
 
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr = 0.001)
-        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr = 0.001)
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=0.001)
+        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=0.001)
 
         self.noise = OUNoise(action_dim)
 
         self.gamma = 0.99
         self.tau = 0.005
 
-    def select_action(self, state, add_noise = True):
+    def select_action(self, state, add_noise=True):
         with torch.no_grad():
             state = torch.FloatTensor(state).to(self.device) #converts numpy array to tensor and send to device
             action = self.actor(state).cpu().numpy() #gets the action and converts to numpy
@@ -176,4 +176,3 @@ def train_ddpg(env, agent, num_episodes, batch_size, replay_buffer_size):
             print(f"Episode {episode+1}/{num_episodes}, Avg Reward: {avg_reward:.2f}")
 
     return episode_rewards
-
