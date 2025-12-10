@@ -1,6 +1,7 @@
 import gymnasium as gym
-import torch
 import matplotlib.pyplot as plt
+import torch
+
 from ddpg import DDPGAgent, train_ddpg
 
 env = gym.make("Pendulum-v1", render_mode="human")
@@ -11,7 +12,7 @@ state_dim = env.observation_space.shape[0]
 action_dim = env.action_space.shape[0]
 max_action = float(env.action_space.high[0])
 
-agent = DDPGAgent(state_dim, action_dim, max_action,device)
+agent = DDPGAgent(state_dim, action_dim, max_action, device)
 
 num_episodes = 100
 batch_size = 64
